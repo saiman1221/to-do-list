@@ -1,0 +1,45 @@
+.SideBar {
+  &__title {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 42px;
+    color: #FFFFFF;
+    margin: 50px 0 30px 0;
+  }
+
+  &__search_tags {
+    width: 100%;
+    background: #242320;
+    border: 2px solid #FF8303;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 15px;
+    margin-bottom: 50px;
+
+    &__input {
+      width: 90%;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 18px;
+      color: rgba(240, 227, 202, 0.64);
+      background-color: transparent;
+    }
+
+    &__close_button {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}

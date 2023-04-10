@@ -11,6 +11,7 @@
   }
 
   &__search_tags {
+    height: 55px;
     width: 100%;
     background: #242320;
     border: 2px solid #FF8303;
@@ -18,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 15px;
+    padding: 0 15px;
     margin-bottom: 50px;
 
     &__input {

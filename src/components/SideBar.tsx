@@ -20,7 +20,7 @@ export const SideBar = () => {
                     className={'SideBar__search_tags__close_button'}
                     onClick={() => setInputTags('')}
                 >
-                    <img src={logo} alt=""/>
+                    <img src={logo} alt="Удалить содержимое"/>
                 </button>
             </div>
         </div>

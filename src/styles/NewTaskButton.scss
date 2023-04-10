@@ -1,0 +1,23 @@
+.NewTaskButton{
+  &__button {
+    width: 55px;
+    height: 55px;
+    background: #242320;
+    border: 2px solid #FF8303;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(255, 131, 3, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  &__button:hover {
+    box-shadow: 0 0 8px #ff8303;
+  }
+
+  &__button:active{
+    background: #10100e;
+  }
+}

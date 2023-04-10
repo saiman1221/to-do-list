@@ -1,0 +1,65 @@
+.FilterTasks{
+  width: max-content;
+  position: relative;
+  z-index: 10;
+
+  &__button {
+    height: 100%;
+    width: fit-content;
+    background: #242320;
+    border: 2px solid #FF8303;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__options {
+    width: 300px;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    transition: 0.3s;
+
+    &__item {
+      width: 100%;
+      padding: 18px 15px;
+      background: #242320;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    &__item:hover {
+      background: rgb(43, 43, 44);
+    }
+  }
+
+  &__options.show{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__options.hide{
+    opacity: 0;
+    transform: translateX(-20px);
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

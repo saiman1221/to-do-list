@@ -9,9 +9,13 @@ export const TasksBarTopSide = (props: any) => {
         props.newTaskFunction(taskData);
     }
 
+    const filterTasks = (filterTypes: any) => {
+        props.filterTasksFunction(filterTypes)
+    }
+
     return (
         <div className={'TasksBarTopSide'}>
-            <FilterTasksButton/>
+            <FilterTasksButton filterTasks={filterTasks}/>
             <NewTaskButton newTask={newTask}/>
         </div>
     );

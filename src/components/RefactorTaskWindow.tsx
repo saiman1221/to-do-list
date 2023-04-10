@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styles/RefactorTaskWindow.scss';
 
 export const RefactorTaskWindow = (props: any) => {
@@ -7,7 +7,8 @@ export const RefactorTaskWindow = (props: any) => {
     const [taskDescription, setTaskDescription] = useState(props.taskData?.description);
     const [taskId, setTaskId] = useState(props.taskData?.id);
     const [taskDate, setTaskDate] = useState(now.toLocaleDateString());
-
+    const [errorState, setErrorState] = useState(false);
+    const [errorListener, setErrorListener] = useState(false)
     const cancelButton = () => {
         props.setShowWindow(false);
         setTaskTitle('');
@@ -15,21 +16,33 @@ export const RefactorTaskWindow = (props: any) => {
         setTaskId('');
         setTaskDate('')
     }
-
     const saveButton = () => {
-        props.setShowWindow(false);
-        props.saveChanges(taskTitle, taskDescription, taskId, taskDate);
-        setTaskTitle('');
-        setTaskDescription('');
-        setTaskId('');
-        setTaskDate('')
+        if(taskTitle) {
+            setErrorState(false);
+            props.setShowWindow(false);
+            props.saveChanges(taskTitle, taskDescription, taskId, taskDate);
+            setTaskTitle('');
+            setTaskDescription('');
+            setTaskId('');
+            setTaskDate('')
+        }
+        else {
+            setErrorListener(true);
+            setErrorState(true);
+        }
     }
 
+    useEffect(() => {
+        !taskTitle && errorListener ? setErrorState(true) : setErrorState(false)
+    }, [taskTitle, errorListener])
+
     return (
-        <div className={props.showWindow ? 'RefactorTaskWindow show' : 'RefactorTaskWindow hide'}>
+        <div className={'RefactorTaskWindow ' + props.showWindow}>
             <div className={'RefactorTaskWindow__content'}>
-                <input type="text" placeholder={'Заголовок'} className={'RefactorTaskWindow__content__title'} onChange={e => setTaskTitle(e.target.value)} value={taskTitle}/>
-                <textarea className={'RefactorTaskWindow__content__description'} placeholder={'Описание'} onChange={e => setTaskDescription(e.target.value)} value={taskDescription}/>
+                <input type="text" placeholder={'Заголовок'} className={errorState ? 'RefactorTaskWindow__content__title error' : 'RefactorTaskWindow__content__title'}
+                       onChange={e => setTaskTitle(e.target.value)} value={taskTitle}/>
+                <textarea className={'RefactorTaskWindow__content__description'} placeholder={'Описание'}
+                          onChange={e => setTaskDescription(e.target.value)} value={taskDescription}/>
                 <div className={'RefactorTaskWindow__content__buttons'}>
                     <button className={'button'} onClick={() => cancelButton()}>Cancel</button>
                     <button className={'button'} onClick={() => saveButton()}>Save</button>

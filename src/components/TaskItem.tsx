@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import '../styles/TaskItem.scss';
 import {RefactorTaskWindow} from "./RefactorTaskWindow";
+import {Transition} from "react-transition-group";
 
 export const TaskItem = (props: any) => {
     const deleteImg: string = require("../assets/tasks-list/delete-task.svg").default;
@@ -15,6 +16,20 @@ export const TaskItem = (props: any) => {
         })
     }
 
+    const duration = 300;
+    interface transitionClassesInterface {
+        entering: string,
+        entered: string,
+        exiting: string,
+        exited: string
+    }
+    const transitionClasses = {
+        entering: 'show',
+        entered: 'show',
+        exiting: 'hide',
+        exited: 'hide',
+    }
+
     return (
         <div className={'TaskItem'}>
             <p className={'TaskItem__date'}>{props.task.date}</p>
@@ -27,12 +42,17 @@ export const TaskItem = (props: any) => {
                     <button className={'TaskItem__content__buttons__button'} onClick={() => setShowWindow(true)}>
                         <img src={refactorImg} alt="Редактировать задачу"/>
                     </button>
-                    <button className={'TaskItem__content__buttons__button'} onClick={() => props.deleteTask(props.task.id)}>
+                    <button className={'TaskItem__content__buttons__button'}
+                            onClick={() => props.deleteTask(props.task.id)}>
                         <img src={deleteImg} alt="Удалить задачу"/>
                     </button>
                 </div>
             </div>
-            {showWindow ? <RefactorTaskWindow showWindow={showWindow} setShowWindow={setShowWindow} taskData={props.task} saveChanges={saveChanges}/> : null}
+            <Transition in={showWindow} timeout={duration} unmountOnExit={true}>
+                {(state: string) => (
+                    <RefactorTaskWindow showWindow={transitionClasses[state as keyof transitionClassesInterface]} setShowWindow={setShowWindow} taskData={props.task} saveChanges={saveChanges}/>
+                )}
+            </Transition>
         </div>
     );
 }

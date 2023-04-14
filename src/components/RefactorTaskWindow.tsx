@@ -41,8 +41,13 @@ export const RefactorTaskWindow = (props: any) => {
             <div className={'RefactorTaskWindow__content'}>
                 <input type="text" placeholder={'Заголовок'} className={errorState ? 'RefactorTaskWindow__content__title error' : 'RefactorTaskWindow__content__title'}
                        onChange={e => setTaskTitle(e.target.value)} value={taskTitle}/>
-                <textarea className={'RefactorTaskWindow__content__description'} placeholder={'Описание'}
-                          onChange={e => setTaskDescription(e.target.value)} value={taskDescription}/>
+                <textarea className={'RefactorTaskWindow__content__description'}
+                          placeholder={'Описание'}
+                          onChange={e => setTaskDescription(e.target.value)}
+                          value={taskDescription}
+                          wrap={'hard'}
+                          cols={20}
+                />
                 <div className={'RefactorTaskWindow__content__buttons'}>
                     <button className={'button'} onClick={() => cancelButton()}>Cancel</button>
                     <button className={'button'} onClick={() => saveButton()}>Save</button>

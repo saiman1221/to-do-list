@@ -36,7 +36,7 @@ export const TaskItem = (props: any) => {
             <div className={'TaskItem__content'}>
                 <div className='TaskItem__content__text'>
                     <h3 className={'TaskItem__content__text__title'}>{props.task.title}</h3>
-                    <p className={'TaskItem__content__text__description'}>{props.task.description}</p>
+                    <pre className={'TaskItem__content__text__description'}>{props.task.description}</pre>
                 </div>
                 <div className='TaskItem__content__buttons'>
                     <button className={'TaskItem__content__buttons__button'} onClick={() => setShowWindow(true)}>

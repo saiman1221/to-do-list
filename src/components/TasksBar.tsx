@@ -5,7 +5,7 @@ import {TasksBarTopSide} from "./TasksBarTopSide";
 import {TasksContent} from "./TasksContent";
 
 export const TasksBar = () => {
-    JSON.parse(localStorage.getItem('tasks')!).length ? console.log('wdad') : localStorage.setItem('tasks', JSON.stringify([]));
+    JSON.parse(localStorage.getItem('tasks')!) && JSON.parse(localStorage.getItem('tasks')!).length ? console.log('local storage is true') : localStorage.setItem('tasks', JSON.stringify([]));
     const [tasksList, setTasksList] = useState(JSON.parse(localStorage.getItem('tasks')!))
 
     const newTaskFunction = (newTaskData: any) => {
